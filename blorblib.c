@@ -11,34 +11,28 @@
 #include "blorb.h"
 #include "blorblow.h"
 
-#ifdef BLORB_BIG_ENDIAN
-static char contentsticker[] = "\nBlorb Library 1.0 (big-endian)\n";
-#define bb_native2(v) (v)
-#define bb_native4(v) (v)
-#endif
-
-#ifdef BLORB_LITTLE_ENDIAN
-static char contentsticker[] = "\nBlorb Library 1.0 (little-endian)\n";
-#define bb_native2(v)   \
-    ( (((uint16)(v) >> 8) & 0x00ff)    \
-    | (((uint16)(v) << 8) & 0xff00))
-#define bb_native4(v)   \
-    ( (((uint32)(v) >> 24) & 0x000000ff)    \
-    | (((uint32)(v) >>  8) & 0x0000ff00)    \
-    | (((uint32)(v) <<  8) & 0x00ff0000)   \
-    | (((uint32)(v) << 24) & 0xff000000))
-#endif
-
-#ifndef bb_native4
-"You must define either BLORB_BIG_ENDIAN or BLORB_LITTLE_ENDIAN in blorb.h \
-    in order to compile this library.";
-#endif
-
 static int lib_inited = FALSE;
 
 static bb_err_t bb_initialize_map(bb_map_t *map);
 static bb_err_t bb_initialize(void);
 static int sortsplot(bb_resdesc_t **p1, bb_resdesc_t **p2);
+static int bigendian;
+
+static uint16 bb_native2(uint16 v)
+{
+    if (bigendian) return v;
+    return ( (((uint16)(v) >> 8) & 0x00ff)
+           | (((uint16)(v) << 8) & 0xff00));
+}
+
+static uint32 bb_native4(uint32 v)
+{
+    if (bigendian) return v;
+    return ( (((uint32)(v) >> 24) & 0x000000ff)
+           | (((uint32)(v) >>  8) & 0x0000ff00)
+           | (((uint32)(v) <<  8) & 0x00ff0000)
+           | (((uint32)(v) << 24) & 0xff000000));
+}
 
 /* Do some one-time startup tests. */
 static bb_err_t bb_initialize()

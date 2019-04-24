@@ -12,11 +12,8 @@
 /* Things you (the porter) have to edit: */
 
 /* As you might expect, uint32 must be a 32-bit unsigned numeric type,
-    and uint16 a 16-bit unsigned numeric type. You should also uncomment
-    exactly one of the two ENDIAN definitions. */
-    
-/* #define BLORB_BIG_ENDIAN */
-/* #define BLORB_LITTLE_ENDIAN */
+    and uint16 a 16-bit unsigned numeric type. */
+
 typedef unsigned long uint32;
 typedef unsigned short uint16;
 
