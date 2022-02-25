@@ -16,9 +16,9 @@
     exactly one of the two ENDIAN definitions. */
     
 /* #define BLORB_BIG_ENDIAN */
-/* #define BLORB_LITTLE_ENDIAN */
-typedef unsigned long uint32;
-typedef unsigned short uint16;
+#define BLORB_LITTLE_ENDIAN
+typedef uint32_t uint32;
+typedef uint16_t uint16;
 
 /* End of things you have to edit. */
 
