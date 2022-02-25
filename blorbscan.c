@@ -10,6 +10,7 @@
     So don't take this file as sample code, ok?
 */
 
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "blorb.h"

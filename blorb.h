@@ -14,8 +14,8 @@
 /* As you might expect, uint32 must be a 32-bit unsigned numeric type,
     and uint16 a 16-bit unsigned numeric type. */
 
-typedef unsigned long uint32;
-typedef unsigned short uint16;
+typedef uint32_t uint32;
+typedef uint16_t uint16;
 
 /* End of things you have to edit. */
 

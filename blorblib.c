@@ -6,6 +6,7 @@
     interpreter, #include "blorb.h", and you're ready to go.
 */
 
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "blorb.h"
